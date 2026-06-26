@@ -8,14 +8,7 @@
   outputs =
     { nixpkgs, lets, ... }:
     let
-      letsTasks =
-        { mkTask, ... }:
-        {
-          share = mkTask {
-            description = "Task from shared library";
-            run = ''bold_green "Hello from shared library!"'';
-          };
-        };
+      letsTasks = import ./tasks.nix;
     in
     lets.lib.mkFlake {
       inherit nixpkgs;
